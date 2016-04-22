@@ -39,6 +39,78 @@ const cmd = pipe('get-itemproperty c:\\windows\\regedit.exe', 'select name')
 shell(toJson(cmd)).then(process)
 ```
 
+### Creating objects
+
+#### `native powershell`
+
+```
+$a = new-object PSObject; $a | add-member name test; $a | add-member version 0.0.1; $a
+```
+
+#### `windows-powershell`
+```js
+shell(create({ name: 'test', version: '0.0.1' })).then(logStdout)
+```
+
+#### `output`
+
+```
+name    version        
+----    -------                       
+test    0.0.1     
+```
+
+### Composing
+
+Composing commands allows as to create intermediate values.
+
+#### `native powershell`
+
+```
+$a = 1; $a = 2; echo $a + $b;
+```
+
+#### `windows-powershell`
+
+```js
+shell(compose('$a = 1', '$a = 2', 'echo $a + $b')).then(logStdout)
+```
+
+#### `output`
+
+```
+3
+```
+
+### Piping
+
+#### `native powershell`
+
+```
+get-wmiobject Win32_LogicalDisk | select name
+```
+
+#### `windows-powershell`
+
+```js
+const cmd = pipe(
+  'get-wmiobject Win32_LogicalDisk',
+  'select name'
+)
+
+shell(cmd).then(logStdout)
+```
+
+#### `output`
+
+```
+name
+----
+C:
+D:
+H:
+```
+
 ## Tests
 
 ```bash
