@@ -4,6 +4,7 @@
   "description": "lightweight, functional, promise-based powershell wrapper",
   "main": "index.js",
   "scripts": {
+    "v": "xyz",
     "test": "tape test/*.js | tap-dot"
   },
   "dependencies": {
