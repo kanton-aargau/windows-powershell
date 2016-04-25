@@ -1,7 +1,7 @@
 
 const toCamelCase = require('to-camel-case')
 const spawn = require('buffered-spawn')
-const rename = require('rename-keys')
+const rename = require('deep-rename-keys')
 
 function shell (command) {
   return spawn('powershell.exe', ['-command', command])
