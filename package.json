@@ -1,6 +1,6 @@
 {
   "name": "windows-powershell",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "lightweight, functional, promise-based powershell wrapper",
   "main": "index.js",
   "scripts": {
